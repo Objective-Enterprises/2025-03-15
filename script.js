@@ -2,12 +2,18 @@ const main = document.getElementById('main')
 const search = document.getElementById('search')
 const movieList = document.getElementById('movie-list')
 
-console.log('movies', movies)
+function displayDetails (title) {
+  console.log('title', title)
+  const details = `
+    <h1>${title}</h1>
+  `
+  main.innerHTML = details
+}
 
 function displayCards (movies) {
   const cards = movies.map(movie => {
     return `
-      <div class='movie-card'> 
+      <div class='movie-card' onclick="displayDetails('${movie.title}')"> 
         <h2>${movie.title}</h2>
         <img src="${movie.image}" style="width: 100%" />
         <div>Genre: ${movie.genre}</div>
