@@ -15,3 +15,16 @@ const cards = movies.map(movie => {
   `
 })
 movieList.innerHTML = cards
+
+search.addEventListener('input', (event) => {
+  const lowerValue = event.target.value.toLowerCase()
+  const filtered = movies.filter(movie => {
+    const parts = [movie.title, movie.genre, movie.director, ...movie.cast]
+    const match = parts.find(part => {
+      const lowerPart = part.toLowerCase()
+      return lowerPart.includes(lowerValue)
+    })
+    return match
+  })
+  console.log('filtered', filtered)
+})
