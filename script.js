@@ -4,8 +4,16 @@ const movieList = document.getElementById('movie-list')
 
 function displayDetails (title) {
   console.log('title', title)
+  const movie = movies.find(movie => {
+    return movie.title === title
+  })
+  console.log('movie', movie)
   const details = `
+    <button onclick="window.location.reload()">Back</button>
     <h1>${title}</h1>
+    <img src="${movie.image}" />
+    <h4>${movie.plot}</h4>
+    <p>Cast: ${movie.cast}</p>
   `
   main.innerHTML = details
 }
